@@ -3,7 +3,7 @@ from pylon.core.tools import log, web
 
 class Slot:
     integration_name = 'chroma'
-    section_name = 'storage'
+    section_name = 'vectorstore'
 
     @web.slot(f'db_{section_name}_content')
     def toggle_content(self, context, slot, payload):

@@ -32,7 +32,7 @@ class Module(module.ModuleModel):
     def init(self):
         """ Init module """
         log.info('Initializing Chroma module')
-        SECTION_NAME = 'storage'
+        SECTION_NAME = 'vectorstore'
 
         self.descriptor.init_blueprint()
         self.descriptor.init_slots()
@@ -41,13 +41,14 @@ class Module(module.ModuleModel):
 
         self.context.rpc_manager.call.integrations_register_section(
             name=SECTION_NAME,
-            integration_description='Manage ai integrations',
+            integration_description='Manage vector storage integrations',
         )
         self.context.rpc_manager.call.integrations_register(
             name=self.descriptor.name,
             section=SECTION_NAME,
             settings_model=IntegrationModel,
         )
+        self.descriptor.init_rpcs()
 
     def deinit(self):  # pylint: disable=R0201
         """ De-init module """

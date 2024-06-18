@@ -3,7 +3,7 @@ from pylon.core.tools import log, web
 
 class Slot:
     integration_name = 'chroma'
-    section_name = 'storage'
+    section_name = 'vectorstore'
 
     @web.slot(f'integrations_{section_name}_content')
     def integration_create_modal_content(self, context, slot, payload):
